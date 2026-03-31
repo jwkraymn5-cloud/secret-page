@@ -1,16 +1,76 @@
-<div id="main-content">
-    <div class="heart-icon">❤️</div>
-    <h1>MALAK</h1>
-    <p>
-       يا ملكه قلبي، عاوزه أقولك إنك وحشتيني أوي بجد، وحشني كل حاجة فيكِ.. 
-   وجودك جنبي هو الأمان اللي بدور عليه دايماً، وتفاصيلك الصغيرة أنا واخدها في قلبي ومخبيها. ❤️ <br>
-       بحبك وبحب غيرتك وبحب كل حاجه في يا حياتي ❤️
-    </p>
-    
-    <div class="music-info">
-        <span>الأغنية بتشتغل عشانك دلوقتي... 🎵</span>
-        <audio id="myAudio" loop>
-            <source src="https://youtu.be/UUx2e2LOelY?si=AABLu1wjr6Fkdrpa.mp3" type="audio/mpeg">
-        </audio>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALAK ❤️</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            color: #fff;
+        }
+        #login-screen { text-align: center; transition: 0.5s; }
+        .heart { font-size: 50px; color: red; animation: pulse 1s infinite; margin-bottom: 20px; }
+        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.2);} 100% {transform: scale(1);} }
+        input {
+            padding: 12px; border-radius: 25px; border: 1px solid #ff4d4d;
+            background: #1a1a1a; color: #fff; text-align: center; width: 200px; outline: none;
+        }
+        button {
+            margin-top: 15px; padding: 10px 30px; border-radius: 25px;
+            border: none; background: red; color: #fff; cursor: pointer; font-weight: bold;
+        }
+        #main-content {
+            display: none; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=800&q=80');
+            background-size: cover; background-position: center;
+            flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        }
+        h1 { font-size: 50px; letter-spacing: 5px; margin-bottom: 10px; text-shadow: 2px 2px 10px #000; }
+        p { font-size: 18px; padding: 0 30px; line-height: 1.6; text-shadow: 1px 1px 5px #000; }
+        .player {
+            position: absolute; bottom: 50px; background: rgba(255,255,255,0.1);
+            padding: 20px; border-radius: 50px; backdrop-filter: blur(10px); width: 85%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="heart">❤️</div>
+        <h3 style="margin-bottom:15px;">اكتبي الباسورد يا ملك</h3>
+        <input type="password" id="pass" placeholder="Password..."><br>
+        <button onclick="check()">دخول</button>
     </div>
-</div>
+
+    <div id="main-content">
+        <div class="heart">❤️</div>
+        <h1>MALAK</h1>
+        <p>يا ملك قلبي، وحشتيني أوي بجد.. <br> وجودك جنبي هو الأمان، وتفاصيلك مخبيها في قلبي. ❤️</p>
+        <div class="player">
+            <span>🎵 الأغنية بتشتغل عشانك...</span>
+            <audio id="music" loop>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        function check() {
+            if(document.getElementById('pass').value === 'love') {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'flex';
+                document.getElementById('music').play();
+            } else { alert('الباسورد غلط يا ملوكة 😉'); }
+        }
+    </script>
+</body>
+</html>
